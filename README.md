@@ -12,8 +12,6 @@ Vide tutoriais do PI.
 
 # 3GL
 
-## Nome do Grupo
-
 ## Integrantes: <a href="https://www.linkedin.com/in/guilherme-soares-0a3542208/">Guilherme Nunes</a>, <a href="https://www.linkedin.com/in/gustavobitencourts/">Gustavo Bitencourt</a>, <a href="https://www.linkedin.com/in/gabriel-melego-julio-85b83a307/">Gabriel Melego</a>, <a href="https://www.linkedin.com/in/luizfelipel/">Luiz Felipe</a>
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/rodrigo-da-rosa-phd/">Rodrigo Rosa</a>, <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco Escobar</a>, <a href="https://www.linkedin.com/in/jefferson-o-silva/">Jefferson Silva</a>, <a href="https://www.linkedin.com/in/aimarlopes/">Aimar Martins</a>
@@ -24,9 +22,7 @@ Vide tutoriais do PI.
 <img src="imagens/Imagem PI 3GL.png" alt="3GL - APP FISIOTERAPIA RPG" border="0">
 
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
-<br><br>
-Meu projeto ajuda estudantes FECAP a configurarem seus githubs.
+Projetando uma solução digital para melhorar a comunicação com seus pacientes e acompanhar a evolução ao longo do tratamento de Fisioterapia RPG.
 <br><br>
 May the force be with you!
 <br><br>
