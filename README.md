@@ -16,7 +16,7 @@ Vide tutoriais do PI.
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/rodrigo-da-rosa-phd/">Rodrigo Rosa</a>, <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco Escobar</a>, <a href="https://www.linkedin.com/in/jefferson-o-silva/">Jefferson Silva</a>, <a href="https://www.linkedin.com/in/aimarlopes/">Aimar Martins</a>
 
-## Descrição
+## Imagem representativa - Equipe 3GL
 
 <p align="center">
 <img src="imagens/Imagem PI 3GL.png" alt="3GL - APP FISIOTERAPIA RPG" border="0">
