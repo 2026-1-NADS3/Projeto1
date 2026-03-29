@@ -8,7 +8,7 @@ Este projeto apresenta uma solução de automação em Shell Script (Bash) para 
 Maya_RPG/
 └── scripts/
     ├── setup.sh       → Configura o ambiente e instala o Java 17 
-    ├── monitor.sh     → Mostra o uso de CPU, memória e disco [cite: 59]
+    ├── monitor.sh     → Mostra o uso de CPU, memória e disco
     ├── backup.sh      → Faz backup do projeto automaticamente 
     ├── gerenciar.sh   → Inicia, para e reinicia o backend 
     ├── backend_maya.jar → Arquivo demonstrativo (vazio) 
