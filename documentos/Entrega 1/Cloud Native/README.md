@@ -1,6 +1,6 @@
 # Projeto Maya RPG - Automação de Infraestrutura
 
-Este projeto apresenta uma solução de automação em Shell Script (Bash) para o App Maya RPG, focado no agendamento e acompanhamento de sessões de fisioterapia[cite: 12]. [cite_start]O objetivo é garantir a disponibilidade e a qualidade do produto conforme a norma ISO/IEC 25010[cite: 8].
+Este projeto apresenta uma solução de automação em Shell Script (Bash) para o App Maya RPG, focado no agendamento e acompanhamento de sessões de fisioterapia. O objetivo é garantir a disponibilidade e a qualidade do produto conforme a norma ISO/IEC 25010.
 
 ## Arquivos
 
@@ -121,7 +121,7 @@ Isso prova que a lógica de automação e monitoramento está funcionando corret
 
 ### Ambiente Ubuntu Server e Portabilidade
 
-Para atender às características de **Compatibilidade** e **Portabilidade** da norma ISO 25010, os scripts foram desenhados para o ecossistema Ubuntu[cite: 62, 93, 102]:
+Para atender às características de **Compatibilidade** e **Portabilidade** da norma ISO 25010, os scripts foram desenhados para o ecossistema Ubuntu:
 
 ---
 
