@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Botões do NAV -->
+    <item
+        android:id="@+id/nav_inicio"
+        android:icon="@drawable/ic_home"
+        android:title="Início" />
+
+    <item
+        android:id="@+id/nav_exercicios"
+        android:icon="@drawable/ic_fitness"
+        android:title="Exercícios" />
+
+    <item
+        android:id="@+id/nav_historico"
+        android:icon="@drawable/ic_history"
+        android:title="Histórico" />
+
+    <item
+        android:id="@+id/nav_perfil"
+        android:icon="@drawable/ic_profile"
+        android:title="Perfil" />
+</menu>
