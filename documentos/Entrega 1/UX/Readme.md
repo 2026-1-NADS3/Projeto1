@@ -1,4 +1,4 @@
-# **O LINK ABAIXO CONTÉM O WIREFRAME DE BAIXA FIDELIDADE, VISTO O QUE FOI SOLICITADO**
+# **O Link abaixo contém o Wireframe de Baixa Fidelidade**
 
 https://www.figma.com/design/4Na6cwR7M2Bn3Kjlh3zXXq/Wireframe-3GL?node-id=0-1&t=AJ56Q4ieYpn4GtsF-1
 
