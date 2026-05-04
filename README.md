@@ -17,7 +17,9 @@
 
 
 Projetando uma solução digital para melhorar a comunicação com seus pacientes e acompanhar a evolução ao longo do tratamento de Fisioterapia RPG.
+
+### BANNER
+O banner está localizado na pasta "Banner", dentro da pasta "Documentos".
 <br><br>
 
-###BANNER
-O banner está localizado na pasta "Banner", dentro da pasta "Documentos".
+
