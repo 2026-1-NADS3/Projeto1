@@ -1,0 +1,36 @@
+services:
+  maya-db-server:
+    build: ./database
+    container_name: container-maya-db
+    environment:
+      POSTGRES_DB: maya_db_production
+      POSTGRES_USER: admin_maya
+      POSTGRES_PASSWORD: senha_maya_2026
+    volumes:
+      - maya_persist_data:/var/lib/postgresql/data
+    networks:
+      - maya-network
+
+  maya-api-rest:
+    build:
+      context: ../../../
+      dockerfile: "documentos/Entrega 2/Cloud Native/Dockerfile"
+    container_name: container-maya-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - maya-db-server
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://maya-db-server:5432/maya_db_production
+      SPRING_DATASOURCE_USERNAME: admin_maya
+      SPRING_DATASOURCE_PASSWORD: senha_maya_2026
+    networks:
+      - maya-network
+
+networks:
+  maya-network:
+    driver: bridge
+
+volumes:
+  maya_persist_data:
+    name: maya_data_volume
