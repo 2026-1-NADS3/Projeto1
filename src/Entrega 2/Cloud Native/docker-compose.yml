@@ -13,13 +13,14 @@ services:
 
   maya-api-rest:
     build:
-      context: ../../../
-      dockerfile: "documentos/Entrega 2/Cloud Native/Dockerfile"
+      context: ../../..
+      dockerfile: "src/Entrega 2/Cloud Native/Dockerfile"
     container_name: container-maya-api
     ports:
       - "8080:8080"
     depends_on:
       - maya-db-server
+    entrypoint: ["tail", "-f", "/dev/null"]
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://maya-db-server:5432/maya_db_production
       SPRING_DATASOURCE_USERNAME: admin_maya
