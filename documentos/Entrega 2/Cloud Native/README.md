@@ -20,6 +20,11 @@
 
 Esta pasta contém os artefatos de **Cloud Native** do Projeto Maya. O objetivo principal foi containerizar a API Rest (Java/Maven) e o Banco de Dados (PostgreSQL), garantindo um ambiente isolado, replicável e resiliente, utilizando automação via Shell Script para gestão de ciclo de vida.
 
+### Diferenciais Técnicos:
+- **Orquestração Inteligente:** Docker Compose configurado para nomes dinâmicos e isolamento de rede.
+- **Portas Parametrizadas:** Flexibilidade para rodar em diferentes portas via variáveis de ambiente.
+- **Persistence First:** Garantia de que os dados críticos da clínica sobrevivem ao ciclo de vida dos containers.
+
 ---
 
 ## Estrutura de Arquivos
@@ -38,26 +43,27 @@ Cloud Native/
 
 ---
 
-## Execução Rápida
+## Execução e Deploy
 
 Para subir o ambiente completo no Linux Ubuntu, execute os scripts na sequência abaixo:
 
-**1. Instalar dependências (Docker/Compose)**
+* **1. Preparar Ambiente (Instalação e Permissões)
 
 ```bash
-./setup.sh
+sudo ./scripts/setup.sh
 ```
 
-**2. Realizar o Deploy completo**
+* **2. Deploy de Produção (Padrão - Porta 8080)
 
 ```bash
-./deploy.sh
+./scripts/deploy.sh
 ```
 
-**3. Validar execução**
+* **3. Deploy de Staging (Opcional - Porta 8081)
 
 ```bash
-docker ps
+export PORTA_HOST=8081
+docker compose -p maya-staging up -d --build
 ```
 
 ---
@@ -68,8 +74,8 @@ Seguindo os requisitos de Sistemas Operacionais, foram desenvolvidos scripts par
 
 | Validação | Resultado | Descrição Técnica |
 |-----------|:---------:|:-----------------:|
-| `setup.sh` | Ambiente | Verifica e instala o runtime do Docker e Docker Compose. |
-| `deploy.sh` | Orquestração | Gerencia o build das imagens, criação de redes bridge e volumes. |
+| `setup.sh` | Provisionamento | nstala o runtime do Docker e automatiza permissões de grupo. |
+| `deploy.sh` | Orquestração | Gerencia o build multi-stage e o namespace do projeto de produção. |
 | `monitor.sh` | Saúde | Coleta métricas de CPU, Memória e status dos containers em tempo real. |
 | `backup.sh` | Segurança | Realiza o dump estruturado (pg_dump) para persistência externa. |
 
@@ -81,23 +87,23 @@ A infraestrutura foi submetida a testes de estresse e persistência em 11/05/202
 
 | Teste | ISO 25010 | Evidência | Resultado |
 |-------|:---------:|:---------:|:---------:|
-| Persistência de Dados | Confiabilidade | Dados sobrevivem ao `docker compose down`  | ✅ PASS |
-| Conectividade | Interoperabilidade | Ping interno entre API e Banco (0% loss)  | ✅ OK | 
-| Isolamento | Segurança | Banco de dados inacessível fora da `maya-network` | ✅ OK |
-| Eficiência | Performance | Monitoramento ativo via script Shell | ✅ Ativo |
-| Recuperabilidade | Segurança | Backup .sql gerado e validado com 1.9KB | ✅ OK |
+| Persistência de Dados | Confiabilidade | ✅ PASS |
+| Conectividade | Interoperabilidade | ✅ OK | 
+| Isolamento | Segurança | ✅ OK |
+| Eficiência | Performance | ✅ Ativo |
+| Recuperabilidade | Segurança | ✅ OK |
 
 ---
 
 ## Estratégia Cloud Native Aplicada
 
-- Multi-stage Build: O Dockerfile utiliza uma etapa de build (Maven) e outra de runtime (JRE Alpine) para reduzir o tamanho da imagem final e aumentar a segurança.
+- **Multi-stage Build:** O Dockerfile utiliza uma etapa de build (Maven) e outra de runtime (JRE Alpine) para reduzir o tamanho da imagem final e aumentar a segurança.
 
-- Persistência (Volumes): Utilização de volumes nomeados para garantir que os prontuários e agendamentos não sejam perdidos.
+- **Persistência (Volumes):** Utilização de volumes nomeados para garantir que os prontuários e agendamentos não sejam perdidos.
 
-- Rede Privada: API e Banco comunicam-se via DNS interno do Docker, protegendo a camada de dados.
+- **Rede Privada:** API e Banco comunicam-se via DNS interno do Docker, protegendo a camada de dados.
 
-- Integração de Build: Pipeline de compilação Maven totalmente integrado ao Docker, gerando artefatos executáveis e prontos para produção.
+- **Integração de Build:** Pipeline de compilação Maven totalmente integrado ao Docker, gerando artefatos executáveis e prontos para produção.
 
 ---
 

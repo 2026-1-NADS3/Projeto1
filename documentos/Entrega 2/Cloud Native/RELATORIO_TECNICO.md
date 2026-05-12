@@ -14,21 +14,27 @@ Este documento detalha os testes realizados para validar a resiliência, persist
 
 ---
 
-##  Orquestração e Saúde dos Serviços
-**Objetivo:** Validar se o Docker Compose gerencia corretamente o ciclo de vida da API e do Banco de Dados.
+## Orquestração e Isolamento de Ambientes
 
-* **Comando:** `docker ps`
-* **Evidência:**
+**Objetivo:** Validar a capacidade da infraestrutura de rodar instâncias isoladas (Multi-tenancy).
+
+Utilizando o parâmetro `-p` (project), isolamos o tráfego e os dados.
+
+- **Produção:** Porta 8080 (`producao-maya-api-rest-1`)
+- **Staging:** Porta 8081 (`maya-staging-maya-api-rest-1`)
+* **Evidência:** `docker ps` mostrando múltiplos projetos ativos.
 
 ![Status dos Containers](../../../imagens/cloud-native/02-status.png)
 
 ---
 
 ## Conectividade de Rede (Interoperabilidade)
-**Objetivo:** Provar que a rede isolada `maya-network` permite a comunicação segura via DNS interno entre a aplicação e o banco.
+**Objetivo:** Provar que a rede isolada `producao_maya-network` permite a comunicação segura via DNS interno entre os serviços do ecossistema.
 
-* **Comando:** `docker exec container-maya-db ping container-maya-api -c 3`
-* **Resultado esperado:** 0% de perda de pacotes.
+Como os containers estão em uma rede do tipo `bridge` privada, o banco de dados e a API conseguem se comunicar sem exposição desnecessária ao mundo externo.
+
+* **Comando:** `docker exec producao-maya-db-server-1 ping producao-maya-api-rest-1 -c 3`
+* **Resultado esperado:** 0% de perda de pacotes e resolução de nome automática.
 * **Evidência:**
 
 ![Teste de Ping](../../../imagens/cloud-native/03-ping.png)
@@ -47,11 +53,14 @@ Este documento detalha os testes realizados para validar a resiliência, persist
 docker exec -it container-maya-db psql -U admin_maya -d maya_db_production -c "SELECT * FROM valida_entrega;"
 ```
 
+> **Nota:** Nome do container varia conforme o projeto (ex: producao-maya-db-server-1)
+
+
 * **Resultado:** O dado `INFRA_OK` foi retornado com sucesso após o restart, comprovando que o volume Docker está mapeando os dados corretamente para o armazenamento físico do host.
 
 * **Evidência:**
 
-![Persistência de Dados](../../../imagens/cloud-native/08-persistencia.png)
+![Persistência de Dados](../../../imagens/cloud-native/05-persistencia.png)
 
 ---
 
@@ -84,15 +93,15 @@ docker exec -it container-maya-db psql -U admin_maya -d maya_db_production -c "S
 
 **Objetivo:** Provar que a API é um serviço funcional e não apenas um container vazio.
 
-### Passo 1: Logs de Inicialização
+### Passo 1: Logs do Spring Boot
 
-* **Comando:** `docker logs container-maya-api`
+* **Comandos:** `docker logs producao-maya-api-rest-1` ou  `docker logs maya-staging-maya-api-rest-1`
 * **Resultado:** Sucesso no bootstrap do Spring Boot e ativação da JVM na porta 8080.
 * **Evidência:**
 
 ![Execução do Log](../../../imagens/cloud-native/06-api-log.png)
 
-### Passo 2: Resposta do Endpoint (Curl)
+### Passo 2: Validação via Curl (Porta 8080)
 
 * **Comando:** `curl http://localhost:8080`
 * **Resultado:** Resposta direta da aplicação confirmando a validação da infraestrutura.
@@ -107,8 +116,8 @@ docker exec -it container-maya-db psql -U admin_maya -d maya_db_production -c "S
 | Característica | Implementação Prática |
 |:---:|:---|
 | **Confiabilidade** | Persistência via Volumes Docker e Recuperabilidade via Backup automático. |
-| **Portabilidade** | Ambiente 100% containerizado com Dockerfile multi-stage. |
-| **Eficiência** | Monitoramento ativo de hardware via scripts Bash. |
-| **Operabilidade** | Deploy automatizado via script, reduzindo erro humano. |
+| **Escalabilidade** | Arquitetura multi-ambiente permitindo deploys paralelos. |
+| **Portabilidade** | Uso de Dockerfile multi-stage com JRE Alpine (leve e seguro). |
+| **Segurança** | Rede interna isolada (maya-network) protegendo o Banco de Dados. |
 
 ---
