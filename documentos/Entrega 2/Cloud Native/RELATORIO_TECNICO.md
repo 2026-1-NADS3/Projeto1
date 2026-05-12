@@ -36,32 +36,47 @@ Este documento detalha os testes realizados para validar a resiliência, persist
 ---
 
 ## Persistência de Dados (Confiabilidade)
+
 **Objetivo:** Validar se as informações clínicas dos pacientes sobrevivem a falhas ou reinicializações do servidor através de Volumes Persistentes.
 
 * **Teste realizado:** Criação de tabela `valida_entrega`, execução de `docker compose down` e posterior consulta após novo deploy.
-![Monitorização de Hardware](../../../imagens/cloud-native/04-monitor.png)
-* **Comando:** `SELECT * FROM valida_entrega;`
-* **Resultado:** O dado `INFRA_OK` foi retornado com sucesso após o restart.
+
+* **Comando de validação:** 
+
+```bash
+docker exec -it container-maya-db psql -U admin_maya -d maya_db_production -c "SELECT * FROM valida_entrega;"
+```
+
+* **Resultado:** O dado `INFRA_OK` foi retornado com sucesso após o restart, comprovando que o volume Docker está mapeando os dados corretamente para o armazenamento físico do host.
+
 * **Evidência:**
 
-![Persistência e Backup](../../../imagens/cloud-native/05-backup.png)
+![Persistência de Dados](../../../imagens/cloud-native/05-persistencia.png)
 
 ---
 
 ## Automação e Monitoramento
 **Objetivo:** Demonstrar o uso de Shell Scripting para automação de tarefas de administração de sistemas (SysAdmin).
 
-### 1. Backup Estruturado
-* **Comando:** `./backup.sh`
-* **Evidência:** Print do comando executado e do arquivo `.sql` gerado na pasta `~/backups`.
+### 1. Deploy Automatizado
 
-![Monitorização de Hardware](../../../imagens/cloud-native/05-backup.png)
-
-### 2. Monitoramento de Recursos
-* **Comando:** `./monitor.sh`
-* **Evidência:** Print da tabela de consumo de CPU/RAM em tempo real.
+* **Comando:** `./scripts/deploy.sh`
+* **Descrição:** Script que automatiza o ciclo de vida: limpa o ambiente, realiza o build multi-stage da API e sobe os serviços.
 
 ![Execução do Deploy](../../../imagens/cloud-native/01-deploy.png)
+
+### 2. Backup Estruturado
+* **Comando:** `./scripts/backup.sh`
+* **Verificação:** `ls -lh ~/backups/`
+* **Evidência:** Print do comando executado e do arquivo `.sql` gerado na pasta `~/backups`.
+
+![Backup](../../../imagens/cloud-native/05-backup.png)
+
+### 3. Monitoramento de Recursos
+* **Comando:** `./scripts/monitor.sh`
+* **Evidência:** Print da tabela de consumo de CPU/RAM em tempo real.
+
+![Monitorização de Hardware](../../../imagens/cloud-native/04-monitor.png)
 
 ---
 
