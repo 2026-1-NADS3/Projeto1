@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppMaya3GL">
+        <activity
+            android:name=".activityComunicadosAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".activityAgendaAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".activityExerciciosAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".activityProntuarioAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".activityConfirmacaoAgendamento"
+            android:exported="false" />
+        <activity
+            android:name=".activityAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".activityAdmi"
+            android:exported="false" />
+        <activity
+            android:name=".activityCadastro"
+            android:exported="false" />
+        <activity
+            android:name=".activityLogin"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- Demais telas (Exported = false) -->
+        <activity
+            android:name=".activityConfiguracoes"
+            android:exported="false" />
+        <activity
+            android:name=".activityEvolucao"
+            android:exported="false" />
+        <activity
+            android:name=".activityExercicios3"
+            android:exported="false" />
+        <activity
+            android:name=".activityExercicios2"
+            android:exported="false" />
+        <activity
+            android:name=".PerfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProntuarioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activityExercicios"
+            android:exported="false" />
+        <activity
+            android:name=".AgendamentoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>
