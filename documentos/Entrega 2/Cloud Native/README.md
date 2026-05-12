@@ -97,7 +97,7 @@ A infraestrutura foi submetida a testes de estresse e persistência em 11/05/202
 
 - Rede Privada: API e Banco comunicam-se via DNS interno do Docker, protegendo a camada de dados.
 
-> **Nota Técnica:** O serviço `container-maya-api` foi configurado temporariamente com o `comando tail -f /dev/null` para permitir a validação da rede e infraestrutura enquanto a integração final do código-fonte é concluída pelo time de desenvolvimento.
+- Integração de Build: Pipeline de compilação Maven totalmente integrado ao Docker, gerando artefatos executáveis e prontos para produção.
 
 ---
 

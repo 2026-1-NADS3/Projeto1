@@ -20,7 +20,6 @@ services:
       - "8080:8080"
     depends_on:
       - maya-db-server
-    entrypoint: ["tail", "-f", "/dev/null"]
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://maya-db-server:5432/maya_db_production
       SPRING_DATASOURCE_USERNAME: admin_maya

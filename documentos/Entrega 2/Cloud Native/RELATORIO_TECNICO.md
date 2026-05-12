@@ -39,6 +39,7 @@ Este documento detalha os testes realizados para validar a resiliência, persist
 **Objetivo:** Validar se as informações clínicas dos pacientes sobrevivem a falhas ou reinicializações do servidor através de Volumes Persistentes.
 
 * **Teste realizado:** Criação de tabela `valida_entrega`, execução de `docker compose down` e posterior consulta após novo deploy.
+![Monitorização de Hardware](../../../imagens/cloud-native/04-monitor.png)
 * **Comando:** `SELECT * FROM valida_entrega;`
 * **Resultado:** O dado `INFRA_OK` foi retornado com sucesso após o restart.
 * **Evidência:**
@@ -54,13 +55,35 @@ Este documento detalha os testes realizados para validar a resiliência, persist
 * **Comando:** `./backup.sh`
 * **Evidência:** Print do comando executado e do arquivo `.sql` gerado na pasta `~/backups`.
 
-![Monitorização de Hardware](../../../imagens/cloud-native/04-monitor.png)
+![Monitorização de Hardware](../../../imagens/cloud-native/05-backup.png)
 
 ### 2. Monitoramento de Recursos
 * **Comando:** `./monitor.sh`
 * **Evidência:** Print da tabela de consumo de CPU/RAM em tempo real.
 
 ![Execução do Deploy](../../../imagens/cloud-native/01-deploy.png)
+
+---
+
+## 5. Validação de Runtime da API (Sucesso de Integração)
+
+**Objetivo:** Provar que a API é um serviço funcional e não apenas um container vazio.
+
+### Passo 1: Logs de Inicialização
+
+* **Comando:** `docker logs container-maya-api`
+* **Resultado:** Sucesso no bootstrap do Spring Boot e ativação da JVM na porta 8080.
+* **Evidência:**
+
+![Execução do Log](../../../imagens/cloud-native/06-api-log.png)
+
+### Passo 2: Resposta do Endpoint (Curl)
+
+* **Comando:** `curl http://localhost:8080`
+* **Resultado:** Resposta direta da aplicação confirmando a validação da infraestrutura.
+* **Evidência:**
+
+![Validação da API](../../../imagens/cloud-native/07-api-check.png)
 
 ---
 
