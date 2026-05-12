@@ -14,7 +14,7 @@ services:
   maya-api-rest:
     build:
       context: ../../..
-      dockerfile: "src/Entrega 2/Cloud Native/Dockerfile"
+      dockerfile: "documentos/Entrega 2/Cloud Native/Dockerfile"
     container_name: container-maya-api
     ports:
       - "8080:8080"

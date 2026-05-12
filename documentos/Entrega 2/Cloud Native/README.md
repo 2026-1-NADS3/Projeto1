@@ -1,123 +1,110 @@
-# Relatório — Containerização e Deploy Cloud Native
+<div align="center">
 
-**Projeto:** Maya RPG (Gestão de Fisioterapia)  
-**Disciplina:** Sistemas Operacionais e Cloud Native  
-**Responsável pela Infraestrutura:** Luiz Felipe da Silva Lima  
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL_15-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Java](https://img.shields.io/badge/Java_17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white)
 
----
+<br/>
 
-## 1. Evolução: Da Automação para a Containerização
+# Cloud Native — Entrega 2
+### Sistemas Operacionais e Arquiteturas Cloud Native
 
-Nesta segunda etapa, o projeto **Maya RPG** evoluiu da automação via Shell Script para uma arquitetura **Cloud Native**. A containerização empacota a API e o banco de dados em unidades isoladas, garantindo que o sistema de agendamento de sessões de fisioterapia seja resiliente e escalável.
+*Clínica Maya Yoshiko Yamamoto · PI 3ADS · FECAP 2026*
 
-### Vantagens da Containerização no Projeto:
-- **Portabilidade:** O ambiente de desenvolvimento na VM Ubuntu é rigorosamente idêntico ao ambiente de produção (AWS/Azure).
-- **Isolamento:** Cada serviço possui seus próprios recursos e rede. Uma falha crítica na API não compromete a integridade dos dados no PostgreSQL.
-- **Reprodutibilidade:** A infraestrutura é descrita como código (`Dockerfile` e `docker-compose.yml`), permitindo o provisionamento total com apenas um comando.
-- **Escalabilidade:** Novas instâncias da API podem ser criadas rapidamente a partir da mesma imagem base.
+</div>
 
 ---
 
-## 2. Comparativo: Ambiente Tradicional vs. Containerizado
+## Sobre a Infraestrutura
 
-| Aspecto | Tradicional (Entrega 1) | Containerizado (Entrega 2) |
-|---|---|---|
-| **Instalação** | Manual (OpenJDK, Postgres, etc) | Imagem Docker Reutilizável |
-| **Configuração** | Variáveis de ambiente no `.bashrc` | Variáveis dinâmicas no `docker-compose` |
-| **Isolamento** | Processos compartilham o mesmo SO | Serviços em containers isolados |
-| **Persistência** | Backup manual via script `.sh` | Gerenciada por Volumes Nomeados |
-| **Setup** | Horas de configuração manual | Segundos via `docker compose up` |
+Esta pasta contém os artefatos de **Cloud Native** do Projeto Maya. O objetivo principal foi containerizar a API Rest (Java/Maven) e o Banco de Dados (PostgreSQL), garantindo um ambiente isolado, replicável e resiliente, utilizando automação via Shell Script para gestão de ciclo de vida.
 
 ---
 
-## 3. Estrutura de Arquivos da Entrega
+## Estrutura de Arquivos
 
-```
-text
-mayarpg/ (Raiz)
-├── pom.xml                → Manual de build do Maven (Essencial)
-└── documentos/
-    └── Entrega 2/
-        └── Cloud Native/
-            ├── database/
-            │   └── Dockerfile  → Configuração do PostgreSQL 15
-            ├── Dockerfile      → Build Multi-stage da API Java
-            ├── docker-compose.yml → Orquestrador de Infraestrutura
-            └── README.md       → Este Relatório Técnico
+```text
+Cloud Native/
+│
+├──  database/            # Dockerfile customizado e init scripts do PostgreSQL
+├──  scripts/             # Scripts de automação Bash (centralizados)
+│
+├── Dockerfile           # Build multi-stage (Maven -> JRE 17 Alpine)
+├── docker-compose.yml   # Orquestração de containers, redes e volumes
+├── RELATORIO_TECNICO.md # Documentação detalhada dos atributos de qualidade
+└── README.md            # Guia de execução e visão geral (este arquivo)
 ```
 
 ---
 
-## 4. Estratégia de Infraestrutura e Persistência
+## Execução Rápida
 
-## 4.1 Multi-Stage Build (Otimização)
+Para subir o ambiente completo no Linux Ubuntu, execute os scripts na sequência abaixo:
 
-Utilizamos um build em dois estágios no Dockerfile da API. Isso separa o ambiente de compilação (Maven) do ambiente de execução (JRE), resultando em uma imagem final leve e segura, reduzindo a superfície de ataque conforme a norma ISO 25010.
+**1. Instalar dependências (Docker/Compose)**
 
-4.2 Estratégia de Volumes (Persistência)
-Por padrão, containers são efêmeros. Para garantir que os prontuários dos pacientes sejam preservados, implementamos um Volume Nomeado mapeado para o diretório de dados do PostgreSQL:
-
-## 4. Estratégia de Infraestrutura e Persistência
-
-## 4.1 Multi-Stage Build (Otimização)
-
-Utilizamos um build em dois estágios no Dockerfile da API. Isso separa o ambiente de compilação (Maven) do ambiente de execução (JRE), resultando em uma imagem final leve e segura, reduzindo a superfície de ataque conforme a norma ISO 25010.
-
-## 4.2 Estratégia de Volumes (Persistência)
-
-Por padrão, containers são efêmeros. Para garantir que os prontuários dos pacientes sejam preservados, implementamos um Volume Nomeado mapeado para o diretório de dados do PostgreSQL:
-
-```
-services:
-  maya-db-server:
-    volumes:
-      - maya_data_persistence:/var/lib/postgresql/data
-
-volumes:
-  maya_data_persistence:
-    name: volume-persistente-maya
+```bash
+./setup.sh
 ```
 
-## 4.3 Orquestração de Rede e Segurança
+**2. Realizar o Deploy completo**
 
-Implementamos a maya-network do tipo bridge. A API comunica-se com o banco através do hostname interno, mantendo o tráfego de dados do PostgreSQL isolado e inacessível por acessos externos não autorizados.
-
----
-
-## 5. Como Rodar o Ambiente
-
-1. Certifique-se de estar na pasta da entrega:
-
-```
-cd "documentos/Entrega 2/Cloud Native"
+```bash
+./deploy.sh
 ```
 
-2. Provisione a infraestrutura completa:
+**3. Validar execução**
 
-```
-cd "documentos/Entrega 2/Cloud Native"
-```
-
-3. Valide o status dos serviços:
-
-```
+```bash
 docker ps
 ```
 
 ---
 
-## 6. Qualidade de Software (ISO 25010)
+## Scripts de Automação
 
-O Maya RPG foi containerizado considerando as seguintes características:
+Seguindo os requisitos de Sistemas Operacionais, foram desenvolvidos scripts para automatizar tarefas críticas:
 
-```
-Adequação Funcional: Ambiente pronto para hospedar os serviços de agendamento.
+| Validação | Resultado | Descrição Técnica |
+|-----------|:---------:|:-----------------:|
+| `setup.sh` | Ambiente | Verifica e instala o runtime do Docker e Docker Compose. |
+| `deploy.sh` | Orquestração | Gerencia o build das imagens, criação de redes bridge e volumes. |
+| `monitor.sh` | Saúde | Coleta métricas de CPU, Memória e status dos containers em tempo real. |
+| `backup.sh` | Segurança | Realiza o dump estruturado (pg_dump) para persistência externa. |
 
-Confiabilidade: Recuperação automática de falhas e persistência via volumes.
+---
 
-Eficiência de Desempenho: Uso de imagens base Alpine para menor consumo de memória e CPU.
+## Resultados de Validação (QA)
 
-Portabilidade: Capacidade de deploy em qualquer ecossistema Cloud Native sem reconfiguração.
-```
+A infraestrutura foi submetida a testes de estresse e persistência em 11/05/2026 com sucesso:
+
+| Teste | ISO 25010 | Evidência | Resultado |
+|-------|:---------:|:---------:|:---------:|
+| Persistência de Dados | Confiabilidade | Dados sobrevivem ao `docker compose down`  | ✅ PASS |
+| Conectividade | Interoperabilidade | Ping interno entre API e Banco (0% loss)  | ✅ OK | 
+| Isolamento | Segurança | Banco de dados inacessível fora da `maya-network` | ✅ OK |
+| Eficiência | Performance | Monitoramento ativo via script Shell | ✅ Ativo |
+| Recuperabilidade | Segurança | Backup .sql gerado e validado com 1.9KB | ✅ OK |
+
+---
+
+## Estratégia Cloud Native Aplicada
+
+- Multi-stage Build: O Dockerfile utiliza uma etapa de build (Maven) e outra de runtime (JRE Alpine) para reduzir o tamanho da imagem final e aumentar a segurança.
+
+- Persistência (Volumes): Utilização de volumes nomeados para garantir que os prontuários e agendamentos não sejam perdidos.
+
+- Rede Privada: API e Banco comunicam-se via DNS interno do Docker, protegendo a camada de dados.
+
+> **Nota Técnica:** O serviço `container-maya-api` foi configurado temporariamente com o `comando tail -f /dev/null` para permitir a validação da rede e infraestrutura enquanto a integração final do código-fonte é concluída pelo time de desenvolvimento.
+
+---
+
+## 📚 Documentação Técnica
+
+| Documento | Descrição |
+|:----------|:----------|
+| [Relatório de Validação](./RELATORIO_TECNICO.md) | Evidências de testes, conectividade, persistência e prints do terminal. |
 
 ---
