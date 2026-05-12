@@ -1,13 +1,12 @@
-# **O Link abaixo contém o Wireframe de Baixa Fidelidade**
+# **O Link abaixo contém o Protótipo de Alta Fidelidade**
 
-https://www.figma.com/design/4Na6cwR7M2Bn3Kjlh3zXXq/Wireframe-3GL?node-id=0-1&t=AJ56Q4ieYpn4GtsF-1
+https://www.figma.com/design/KEfkbW88DACNTSwMvS2UMP/Maya-RPG-–-Mockup-Mobile?node-id=0-1&p=f&t=cwmg30B8acBxb2RJ-0
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-**SOLICITADO PARA PRIMEIRA ENTREGA COMPLETA:**
+**SOLICITADO PARA SEGUNDA ENTREGA COMPLETA:**
 
-**Personas** -> Persona Eduardo Silva.png // Persona Mariana Lima.png  
-**Mapa de Jornada** -> Mapa de Jornada - Personas.pdf  
-**User Stories** -> User Stories 3GL.pdf  
+Protótipo de Alta fidelidade --  
+HEART --
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
