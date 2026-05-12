@@ -51,7 +51,7 @@ docker exec -it container-maya-db psql -U admin_maya -d maya_db_production -c "S
 
 * **Evidência:**
 
-![Persistência de Dados](../../../imagens/cloud-native/05-persistencia.png)
+![Persistência de Dados](../../../imagens/cloud-native/08-persistencia.png)
 
 ---
 
