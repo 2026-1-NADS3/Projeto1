@@ -8,7 +8,7 @@
 >
 > **Validação técnica:** 11/05/2026 em ambiente Linux Ubuntu Server (Docker v26.x / Compose v2.x)
 >
-> **Evidências visuais:** 
+> **Evidências visuais:** [`Imagens/cloud-native/`](../../../Imagens/cloud-native/)
 
 Este documento detalha os testes realizados para validar a resiliência, persistência e automação da infraestrutura do Projeto Maya.
 
@@ -18,7 +18,9 @@ Este documento detalha os testes realizados para validar a resiliência, persist
 **Objetivo:** Validar se o Docker Compose gerencia corretamente o ciclo de vida da API e do Banco de Dados.
 
 * **Comando:** `docker ps`
-* **Evidência:** > [COLE AQUI O PRINT DO TERMINAL MOSTRANDO OS DOIS CONTAINERS COM STATUS 'UP']
+* **Evidência:**
+
+![Status dos Containers](../../../imagens/cloud-native/02-status.png)
 
 ---
 
@@ -28,7 +30,8 @@ Este documento detalha os testes realizados para validar a resiliência, persist
 * **Comando:** `docker exec container-maya-db ping container-maya-api -c 3`
 * **Resultado esperado:** 0% de perda de pacotes.
 * **Evidência:**
-> [COLE AQUI O PRINT DO PING QUE DEU 3 PACKETS RECEIVED]
+
+![Teste de Ping](../../../imagens/cloud-native/03-ping.png)
 
 ---
 
@@ -39,7 +42,8 @@ Este documento detalha os testes realizados para validar a resiliência, persist
 * **Comando:** `SELECT * FROM valida_entrega;`
 * **Resultado:** O dado `INFRA_OK` foi retornado com sucesso após o restart.
 * **Evidência:**
-> [COLE AQUI O PRINT DO SELECT MOSTRANDO O 'INFRA_OK']
+
+![Persistência e Backup](../../../imagens/cloud-native/05-backup.png)
 
 ---
 
@@ -50,9 +54,13 @@ Este documento detalha os testes realizados para validar a resiliência, persist
 * **Comando:** `./backup.sh`
 * **Evidência:** Print do comando executado e do arquivo `.sql` gerado na pasta `~/backups`.
 
+![Monitorização de Hardware](../../../imagens/cloud-native/04-monitor.png)
+
 ### 2. Monitoramento de Recursos
 * **Comando:** `./monitor.sh`
 * **Evidência:** Print da tabela de consumo de CPU/RAM em tempo real.
+
+![Execução do Deploy](../../../imagens/cloud-native/01-deploy.png)
 
 ---
 
