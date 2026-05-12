@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="maya_ciano">#33B8CC</color>
+    <color name="maya_terracota">#DC6E5A</color>
+    <color name="maya_creme_fundo">#E1CFAD</color>
+    <color name="maya_marrom_escuro">#634B2A</color>
+    <color name="maya_azul_marinho">#004D71</color>
+    <color name="cinza_fundo">#C3C3C3</color>
+</resources>
