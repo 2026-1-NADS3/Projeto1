@@ -6,7 +6,7 @@ https://www.figma.com/design/KEfkbW88DACNTSwMvS2UMP/Maya-RPG-–-Mockup-Mobile?n
 
 **SOLICITADO PARA SEGUNDA ENTREGA COMPLETA:**
 
-Wireframe de Alta fidelidade --
+Wireframe de Alta fidelidade --  
 HEART --
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
