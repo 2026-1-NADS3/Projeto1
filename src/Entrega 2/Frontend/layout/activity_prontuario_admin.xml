@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F9FA"
+    tools:context=".activityProntuarioAdmin">
+
+    <TextView
+        android:id="@+id/btn_voltar_admin_prontuarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:text="Voltar"
+        android:textColor="@color/maya_ciano"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/ic_arrow_back"
+        app:drawableTint="@color/maya_ciano"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_titulo_prontuarios_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Prontuários do paciente"
+        android:textColor="@color/maya_marrom_escuro"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_voltar_admin_prontuarios" />
+
+    <TextView
+        android:id="@+id/tv_label_pesquisa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Pesquisar prontuário:"
+        android:textColor="#78909C"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_titulo_prontuarios_admin" />
+
+    <EditText
+        android:id="@+id/et_pesquisa_paciente"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="24dp"
+        android:background="@drawable/bg_input_branco"
+        android:elevation="1dp"
+        android:hint="Digite o nome do paciente..."
+        android:inputType="text"
+        android:paddingHorizontal="16dp"
+        android:textColor="#37474F"
+        android:textColorHint="#B0BEC5"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_label_pesquisa" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:clipToPadding="false"
+        android:paddingBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_pesquisa_paciente">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_icone_doc"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:cardBackgroundColor="#E0F7FA"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="0dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_report_doc"
+                            app:tint="@color/maya_ciano" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/tv_data_prontuario"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="11/05/2024"
+                        android:textColor="@color/maya_ciano"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/card_icone_doc"
+                        app:layout_constraintTop_toTopOf="@id/card_icone_doc" />
+
+                    <TextView
+                        android:id="@+id/tv_nome_paciente"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Paciente Maria da Silva Nunes"
+                        android:textColor="@color/maya_marrom_escuro"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_data_prontuario"
+                        app:layout_constraintTop_toBottomOf="@id/tv_data_prontuario" />
+
+                    <TextView
+                        android:id="@+id/tv_subtitulo_prontuario"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Ver prontuário do paciente."
+                        android:textColor="#B0BEC5"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_nome_paciente"
+                        app:layout_constraintTop_toBottomOf="@id/tv_nome_paciente" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_baixar_relatorio"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        android:text="BAIXAR RELATÓRIO"
+                        android:textColor="@color/maya_ciano"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="8dp"
+                        app:icon="@drawable/ic_download"
+                        app:iconGravity="textStart"
+                        app:iconPadding="6dp"
+                        app:iconSize="14dp"
+                        app:iconTint="@color/maya_ciano"
+                        app:strokeColor="#E0E0E0"
+                        app:strokeWidth="1dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_subtitulo_prontuario" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
