@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "558329656563",
+    "project_id": "app-maya-3gl",
+    "storage_bucket": "app-maya-3gl.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558329656563:android:64e75db9d1fe96c85c3386",
+        "android_client_info": {
+          "package_name": "com.example.appmaya3gl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiufTI9qQSV2icHCi5WYXDOS-vOTKJXOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
