@@ -1,0 +1,33 @@
+
+services:
+  maya-db-server:
+    image: cloudnative-maya-db-server
+    build:
+      context: ./database
+    environment:
+      POSTGRES_USER: admin_maya
+      POSTGRES_PASSWORD: senha_maya_2026
+      POSTGRES_DB: maya_db_production
+    networks:
+      - maya-network
+    volumes:
+      - maya-db-data:/var/lib/postgresql/data 
+
+  maya-api-rest:
+    image: cloudnative-maya-api-rest
+    build:
+      context: ../../../
+      dockerfile: "documentos/Entrega 2/Cloud Native/Dockerfile"
+    ports:
+      - "${PORTA_HOST:-8080}:8080"
+    depends_on:
+      - maya-db-server
+    networks:
+      - maya-network
+
+networks:
+  maya-network:
+    driver: bridge
+
+volumes:
+  maya-db-data:
