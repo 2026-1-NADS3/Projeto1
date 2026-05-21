@@ -11,3 +11,8 @@
 - maya123
 
  Para utilizar o app de maneira espontânea, cadastre-se e aproveite.
+<br>
+<br>
+
+# Aplicativo baixável para rodar em seu android:
+**Projeto / src / Entrega 2 / app-debug (1).apk**
