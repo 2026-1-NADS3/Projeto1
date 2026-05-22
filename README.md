@@ -73,5 +73,5 @@ E também da própria profissional para controlar a clínica remotamente, sendo 
 
 ##
 
-Baixe a pasta e aplique no Android Studio, ou se preferir, baixe em seu **ANDROID** o apk nomeado como "app-debug.apk".
+Baixe a pasta e aplique no Android Studio, ou se preferir, baixe em seu **ANDROID** o apk nomeado como "app-debug.apk" em src/.
 
