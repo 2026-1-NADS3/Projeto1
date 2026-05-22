@@ -22,4 +22,56 @@ Projetando uma solução digital para melhorar a comunicação com seus paciente
 O banner está localizado na pasta "Banner", dentro da pasta "Documentos".
 <br><br>
 
+# App mobile - Maya Fisioterapeuta RPG
+
+👩‍⚕️- No 3º Semestre do meu curso de Análise e Desenvolvimento de Sistemas, fora proposto um desafio para melhorar a experiência ao usuário que frequenta e utiliza o método de Fisioterapia de Reeducação Postural Global (RPG) para a profissional Maya Yamamoto, visto sua formação pela USP em 1999, com nota máxima em redes, visando um ótimo atendimento e ótima profissional.
+
+<br>
+
+# Qual é nosso desafio?
+
+📈​- Solução digital para melhorar a comunicação com seus pacientes e acompanhar a evolução ao longo do tratamento. Atualmente, parte do acompanhamento é realizado de forma dispersa (mensagens e registros não padronizados), o que dificulta a rastreabilidade do prontuário, o planejamento de exercícios domiciliares e o controle de agenda.
+
+<br>
+
+# O que aplicamos e como?
+
+🏹​- Utilizamos os conteúdos do 3º Semestre para aplicar uma melhoria em forma tecnológica para a profissional Maya, sendo assim, focamos no Aplicativo Mobile, no qual é de mais adaptabilidade para todos os públicos, visto que, podemos agendar e acompanhar a frequência ao tratamento de forma remota. 
+<br>
+
+Utilizamos ferramentas como: 
+- Android Studio;
+- Java;
+- Firebase;
+- Figma;
+- Canva;
+<br>
+
+Aplicativo desenvolvido em duas formas, sendo uma do paciente para uma navegação mais acessível, com diversas telas como:
+- Tela de agendamento;
+- Tela de dashboard;
+- Tela de exercícios;
+- Perfil interativo com evoluções;
+- Relatórios de evolução (Prontuários);
+- Chat direto com a profissional;
+<br>
+
+E também da própria profissional para controlar a clínica remotamente, sendo disponibilizado os seguintes acessos:
+- Acompanhar as agendas e quem agenda;
+- Disparar comunicados em tempo real;
+- Pegar relatório dos clientes, para maior confecção;
+- Aplicar exercícios diários para os pacientes;
+
+##
+
+**Para maior esclarecimentos, utilize o seguinte login para admin:**
+- user: maya_admin
+- senha: maya123
+<br>
+
+**Para navegar como paciente, cadastre-se e aproveite.**
+
+##
+
+Baixe a pasta e aplique no Android Studio, ou se preferir, baixe em seu **ANDROID** o apk nomeado como "app-debug.apk".
 
